@@ -9,8 +9,7 @@ routerViewsSocketProducts.use(express.json());
 routerViewsSocketProducts.get("/", async (req, res) => {
     const products = await productManager.getProducts();
 
-    return res.render("realTimeProducts", {
+    return res.render("real-time-products", {
         title: "All productos in real time",
-        products,
     });
 });

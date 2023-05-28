@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h3 class="text-center">{{title}}</h3>
+            <div id="products" class="row"></div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <h3>Form create</h3>
+                <form>
+                    <div class="form-floating mb-1">
+                        <input type="text" id="title" class="form-control">
+                        <label for="title">title</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input type="text" id="description" class="form-control">
+                        <label for="description">description</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input type="text" id="code" class="form-control">
+                        <label for="code">code</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input type="number" id="price" class="form-control">
+                        <label for="price">price</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <select class="form-select" id="status">
+                            <option selected>Open menu</option>
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+                        <label for="status">status</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input type="number" id="stock" class="form-control">
+                        <label for="stock">stock</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input type="text" id="category" class="form-control">
+                        <label for="category">category</label>
+                    </div>
+                    <div class="form-floating mb-1">
+                        <input type="file" id="thumbnail" class="form-control" accept="image/png, image/jpeg, image/jpg">
+                        <label for="thumbnail">thumbnail</label>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" id="btn-create" class="btn btn-outline-dark">Create</button>
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <h3>Form delete</h3>
+                <form>
+                    <div class="form-floating mb-1">
+                        <input type="number" id="id" class="form-control">
+                        <label for="title">id</label>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" id="btn-delete" class="btn btn-outline-dark">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/main.js" ></script>

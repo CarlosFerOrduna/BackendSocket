@@ -115,8 +115,9 @@ class ProductManager {
     deleteProduct = async (id) => {
         await this.#loadProducts();
 
-        const existsProduct = this.products.some((p) => p.id === id);
+        id = parseInt(id);
 
+        const existsProduct = this.products.some((p) => p.id === id);
         if (!existsProduct) {
             throw new Error("The product does not exist");
         }

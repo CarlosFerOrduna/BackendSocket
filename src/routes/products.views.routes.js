@@ -16,7 +16,7 @@ routerViewsProducts.get("/", async (req, res) => {
         });
     }
 
-    return res.render("products", {
+    return res.render("home", {
         title: "All productos",
         products,
     });

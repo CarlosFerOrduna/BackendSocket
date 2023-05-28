@@ -7,6 +7,7 @@ import { routerApiCarts } from "./routes/carts.api.routes.js";
 import { routerApiProducts } from "./routes/products.api.routes.js";
 import { routerViewsProducts } from "./routes/products.views.routes.js";
 import { routerViewsSocketProducts } from "./routes/products.views.socket.routes.js";
+import productManager from "./services/ProductManager.js";
 const app = express();
 const port = 8080;
 
@@ -34,7 +35,22 @@ app.get("*", (req, res) => {
 });
 
 const httpServer = app.listen(port, async () => {
-    console.log(`App listening on port ${port} http://localhost:8080/`);
+    console.info(`App listening on port ${port} http://localhost:8080/`);
 });
 
 const socketServer = new Server(httpServer);
+
+socketServer.on("connection", async (socket) => {
+    const products = await productManager.getProducts();
+
+    socket.emit("load_products", { products });
+
+    socket.on("create_product", (msg) => {
+        productManager.addProduct(msg);
+    });
+
+    socket.on("delete_product", (msg) => {
+        const { id } = msg;
+        productManager.deleteProduct(id);
+    });
+});
